@@ -1,3 +1,4 @@
+from argparse import Namespace
 import os
 import yaml						# https://pypi.org/project/PyYAML/
 
@@ -19,16 +20,24 @@ class Configuration:
 
 	properties:
 
-	dirConfig      (str)  (default = "config")  Configuration directory
-	def dirLogs    (str)  (default = "logs")    Logs directory
-	def dirModules (str)  (default = "modules") Modules directory
-	def options    (dict) (default = {})        All Configuration options
+	dirConfig  (str)  (default = "config")  Configuration directory
+	dirLogs    (str)  (default = "logs")    Logs directory
+	dirModules (str)  (default = "modules") Modules directory
+
+	getters & setters:
+
+	home       (str)  (default = ".")       Project's home directory
+	options    (dict) (default = {})        All Configuration options
+	project    (str)  (default = "")        Project name
+		NOTE: There's a setter for project that sets home and project from one path string.
 
 	'''
 
 	__instance		= None
 	__yamlFile: str = os.path.join(os.getcwd(), "pyNewCode.yaml")
 	__options: dict = {}	# Config options (read from YAML file)
+	__project: str	= ""	# Project name
+	__home: str		= ""	# Home directory
 
 	def __new__(cls):
 		if Configuration.__instance is None:
@@ -71,8 +80,25 @@ class Configuration:
 	def dirModules(self) -> str:
 		return "modules" if type(retval := Configuration.__options.get("directories", {}).get("modules")) is not str else retval
 
+	####################################################
+	# CLASS getters and setters:
+
+	@property
+	def home(self) -> str:
+		return Configuration.__home
+
 	@property
 	def options(self) -> str:
 		return Configuration.__options
+		
+	@property
+	def project(self) -> str:
+		return Configuration.__project
+
+	@project.setter
+	def project(self, path: str) -> None:
+		Configuration.__home, Configuration.__project = os.path.split(path)
+		if Configuration.__home == "":
+			Configuration.__home = os.getcwd()
 
 cfg = Configuration()
