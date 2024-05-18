@@ -20,10 +20,16 @@ class Configuration:
 
 	properties:
 
-	dirConfig      (str)  (default = "config")  Configuration directory
-	def dirLogs    (str)  (default = "logs")    Logs directory
-	def dirModules (str)  (default = "modules") Modules directory
-	def options    (dict) (default = {})        All Configuration options
+	dirConfig  (str)  (default = "config")  Configuration directory
+	dirLogs    (str)  (default = "logs")    Logs directory
+	dirModules (str)  (default = "modules") Modules directory
+
+	getters & setters:
+
+	home       (str)  (default = ".")       Project's home directory
+	options    (dict) (default = {})        All Configuration options
+	project    (str)  (default = "")        Project name
+		NOTE: There's a setter for project that sets home and project from one path string.
 
 	'''
 
@@ -74,16 +80,16 @@ class Configuration:
 	def dirModules(self) -> str:
 		return "modules" if type(retval := Configuration.__options.get("directories", {}).get("modules")) is not str else retval
 
-	@property
-	def options(self) -> str:
-		return Configuration.__options
-
 	####################################################
 	# CLASS getters and setters:
 
 	@property
 	def home(self) -> str:
 		return Configuration.__home
+
+	@property
+	def options(self) -> str:
+		return Configuration.__options
 		
 	@property
 	def project(self) -> str:
