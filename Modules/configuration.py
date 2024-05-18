@@ -1,3 +1,4 @@
+from argparse import Namespace
 import os
 import yaml						# https://pypi.org/project/PyYAML/
 
@@ -29,6 +30,8 @@ class Configuration:
 	__instance		= None
 	__yamlFile: str = os.path.join(os.getcwd(), "pyNewCode.yaml")
 	__options: dict = {}	# Config options (read from YAML file)
+	__project: str	= ""	# Project name
+	__home: str		= ""	# Home directory
 
 	def __new__(cls):
 		if Configuration.__instance is None:
@@ -74,5 +77,22 @@ class Configuration:
 	@property
 	def options(self) -> str:
 		return Configuration.__options
+
+	####################################################
+	# CLASS getters and setters:
+
+	@property
+	def home(self) -> str:
+		return Configuration.__home
+		
+	@property
+	def project(self) -> str:
+		return Configuration.__project
+
+	@project.setter
+	def project(self, path: str) -> None:
+		Configuration.__home, Configuration.__project = os.path.split(path)
+		if Configuration.__home == "":
+			Configuration.__home = os.getcwd()
 
 cfg = Configuration()
