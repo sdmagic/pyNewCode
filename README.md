@@ -1,7 +1,7 @@
 # pyNewCode
 
 ## Syntax:
-### pyNewCode.exe:
+#### pyNewCode.exe:
 ```
 pyNewCode.exe [[path]project]
 
@@ -9,7 +9,7 @@ pyNewCode.exe [[path]project]
 		pyNewCode C:\Users\user\Desktop\MyProject
 		(will build MyProject in the C:\Users\user\Desktop directory)
 ```
-### python pyNewCode.py:
+#### python pyNewCode.py:
 ```
 python pyNewCode.py [[path]project]
 
