@@ -1,4 +1,5 @@
 import os
+from modules.configuration import cfg
 
 def main() -> None:
 	os.system('cls')
