@@ -98,6 +98,8 @@ class Configuration:
 	@project.setter
 	def project(self, path: str) -> None:
 		Configuration.__home, Configuration.__project = os.path.split(path)
+		if Configuration.__project == "":
+			Configuration.__project = "MyProject"
 		if Configuration.__home == "":
 			Configuration.__home = os.getcwd()
 
