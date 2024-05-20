@@ -1,3 +1,5 @@
+# The Project's directories
+# NEVER include the drive: in these directories
 directories:
   config: "config"
   logs: "logs"
