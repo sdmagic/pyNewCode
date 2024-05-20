@@ -1,5 +1,7 @@
 # pyNewCode
 
+# <p style="text-align: center;">pyNewCode</p>
+
 ---
 
 ## Description:
@@ -8,6 +10,7 @@ This application preforms all the usual tasks of a new project. It:
 
 - Creates a project directory (if we're not using the current directory)
 - Creates a modules directory (for python modules and utilities)
+  - The modules directory will be a subdirectory off the project directory
 
 ---
 
