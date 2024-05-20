@@ -4,11 +4,14 @@
 
 ## Description:
 
-This application preforms all the usual tasks of a new project. It:
+This application preforms all the usual start of project tasks for a new project. It:
 
-- Creates a project directory (if we're not using the current directory)
-- Creates a modules directory (for python modules and utilities)
-  - The modules directory will be a subdirectory off the project directory
+- Creates the project's directory structure
+  - Creates a project directory (if we're not using the current directory)
+    - All directories will be subdirectories off the project directory
+  - Creates a configuration directory (for the project's config files)
+  - Creates a logs directory (for the project's log files)
+  - Creates a modules directory (for the project's modules and utilities)
 
 ---
 
