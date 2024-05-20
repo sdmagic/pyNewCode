@@ -1,5 +1,3 @@
-# pyNewCode
-
 # <p style="text-align: center;">pyNewCode</p>
 
 ---

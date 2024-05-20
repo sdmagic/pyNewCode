@@ -18,12 +18,17 @@ def parseCLI() -> None:
 
 def main() -> None:
 	os.system('cls')
+	print(f"{"-" * 80}")
 
 	parseCLI()
-	createDirs()
 
 	print(f'Generating project: "{cfg.project}"')
-	print(f'Project directory: "{cfg.home}"')
+	print(f' Project directory: "{cfg.dirHome}"')
+	print(f' Modules directory: "{cfg.dirModules}"')
+
+	createDirs()
 	
+	print(f"{"-" * 80}")
+
 if __name__ == '__main__':
     main()

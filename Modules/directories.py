@@ -20,6 +20,9 @@ def buildDir(path: str) -> None:
 
 	if not os.path.exists(path):
 		os.makedirs(path)
+		print(f"Created directory: \"{path}\"")
+	else:
+		print(f"Could not create directory (already exists): \"{path}\"")
 
 def createDirs() -> None:
 	'''
@@ -28,12 +31,12 @@ def createDirs() -> None:
 
 	homeDir = os.getcwd()
 
-	# buildDir(cfg.dirWorking)
+	buildDir(cfg.dirHome)
 	
-	# os.chdir(cfg.dirWorking)
+	os.chdir(cfg.dirHome)
 
-	# buildDir(cfg.dirConfig)
-	# buildDir(cfg.dirLogs)
-	# buildDir(cfg.dirModules)
+	buildDir(cfg.dirConfig)
+	buildDir(cfg.dirLogs)
+	buildDir(cfg.dirModules)
 	
 	os.chdir(homeDir)

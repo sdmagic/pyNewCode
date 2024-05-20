@@ -84,7 +84,7 @@ class Configuration:
 	# CLASS getters and setters:
 
 	@property
-	def home(self) -> str:
+	def dirHome(self) -> str:
 		return Configuration.__home
 
 	@property
