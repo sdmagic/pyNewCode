@@ -10,11 +10,12 @@ def parseCLI() -> None:
 	'''
 
 	parser = argparse.ArgumentParser(description='Generate a new Python project.')
-	parser.add_argument('project', nargs='?', 
-						default=os.path.join(os.getcwd(), "myProject"),
+	parser.add_argument('workPath', nargs='?', 
+						default=os.getcwd(),
 						help='Optional project with optional path.')
 
-	cfg.project = parser.parse_args().project	# Parse project name & path
+	cfg.dirWorking = parser.parse_args().workPath	# Send path to Configuration
+	cfg.dirApp     = os.path.dirname(os.path.realpath(__file__)) # Set cfg.dirApp
 
 def main() -> None:
 	os.system('cls')
@@ -22,9 +23,10 @@ def main() -> None:
 
 	parseCLI()
 
-	print(f'Generating project: "{cfg.project}"')
-	print(f' Project directory: "{cfg.dirHome}"')
-	print(f' Modules directory: "{cfg.dirModules}"')
+	print(f'Application directory: "{cfg.dirApp}"')
+	print(f'    Project directory: "{cfg.dirWorking}"')
+	print(f'   Generating project: "{cfg.project}"')
+	print(f'    Modules directory: "{cfg.dirModules}"')
 
 	createDirs()
 	

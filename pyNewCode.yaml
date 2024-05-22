@@ -1,3 +1,5 @@
+project: "MyNewProject"
+
 # The Project's directories
 # NEVER include the drive: in these directories
 directories:

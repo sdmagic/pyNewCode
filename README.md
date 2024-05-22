@@ -1,10 +1,8 @@
 # <p style="text-align: center;">pyNewCode</p>
 
----
-
 ## Description:
 
-This application preforms all the usual start of project tasks for a new project. It:
+This application preforms all the usual start-of-project tasks for a new project. It:
 
 - Creates the project's directory structure
   - Creates a project directory (if we're not using the current directory)
@@ -18,26 +16,22 @@ This application preforms all the usual start of project tasks for a new project
 ## Syntax:
 #### pyNewCode.exe:
 ```
-pyNewCode.exe [[path]project]
+pyNewCode.exe [path]
 
 	Examples:
 		pyNewCode C:\Users\user\Desktop\MyProject
-		(will build MyProject in the C:\Users\user\Desktop directory)
+		(will build the new in C:\Users\user\Desktop\myProject directory)
 ```
 #### python pyNewCode.py:
 ```
-python pyNewCode.py [[path]project]
+python pyNewCode.py [path]
 
 	Examples:
 		python pyNewCode.py C:\Users\user\Desktop\MyProject
-		(will build MyProject in the C:\Users\user\Desktop directory)
+		(will build the new project in C:\Users\user\Desktop\MyProject directory)
 ```
-In either case, path and project are optional.
+In either case, path is optional.
 
-If not specified, the current directory and the project name, "myProject" will be used.
-
-If the directory is not specified (a single word given), the current directory will be used.
-
-If the project name is not specified (a path with a trailing path separator is the only option given), then "MyProject" will be used.
+If not specified, the current directory will be used.
 
 ---

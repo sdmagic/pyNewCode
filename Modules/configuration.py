@@ -26,18 +26,19 @@ class Configuration:
 
 	getters & setters:
 
-	home       (str)  (default = ".")       Project's home directory
+	dirApp     (str)  (default = ".")       Project's home directory
+	dirWorking (str)  (default = ".\\")     Project's working directory
+		NOTE: There's a setter for dirWorking that sets it from a given path
 	options    (dict) (default = {})        All Configuration options
 	project    (str)  (default = "")        Project name
-		NOTE: There's a setter for project that sets home and project from one path string.
 
 	'''
 
-	__instance		= None
-	__yamlFile: str = os.path.join(os.getcwd(), "pyNewCode.yaml")
-	__options: dict = {}	# Config options (read from YAML file)
-	__project: str	= ""	# Project name
-	__home: str		= ""	# Home directory
+	__instance		  = None
+	__yamlFile: str   = os.path.join(os.getcwd(), "pyNewCode.yaml")
+	__options: dict   = {}	  # Config options (read from YAML file)
+	__dirApp: str     = ""	  # Application's starting directory
+	__dirWorking: str = ".\\" # Home directory
 
 	def __new__(cls):
 		if Configuration.__instance is None:
@@ -80,27 +81,31 @@ class Configuration:
 	def dirModules(self) -> str:
 		return "modules" if type(retval := Configuration.__options.get("directories", {}).get("modules")) is not str else retval
 
+	@property
+	def project(self) -> str:
+		return "newProject" if type(retval := Configuration.__options.get("project")) is not str else retval
+
 	####################################################
 	# CLASS getters and setters:
 
 	@property
-	def dirHome(self) -> str:
-		return Configuration.__home
+	def dirApp(self) -> str:
+		return Configuration.__dirApp
+
+	@dirApp.setter
+	def dirApp(self, path: str) -> None:
+		Configuration.__dirApp = path
+
+	@property
+	def dirWorking(self) -> str:
+		return Configuration.__dirWorking
+
+	@dirWorking.setter
+	def dirWorking(self, path: str) -> None:
+		Configuration.__dirWorking = path
 
 	@property
 	def options(self) -> str:
 		return Configuration.__options
 		
-	@property
-	def project(self) -> str:
-		return Configuration.__project
-
-	@project.setter
-	def project(self, path: str) -> None:
-		Configuration.__home, Configuration.__project = os.path.split(path)
-		if Configuration.__project == "":
-			Configuration.__project = "MyProject"
-		if Configuration.__home == "":
-			Configuration.__home = os.getcwd()
-
 cfg = Configuration()
