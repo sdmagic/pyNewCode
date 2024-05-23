@@ -43,7 +43,6 @@ class Configuration:
 	def __new__(cls):
 		if Configuration.__instance is None:
 			Configuration.__instance = super(Configuration, cls).__new__(cls)
-			Configuration.readConfig()
 
 		return Configuration.__instance
 
@@ -107,5 +106,13 @@ class Configuration:
 	@property
 	def options(self) -> str:
 		return Configuration.__options
+
+	@property
+	def yamlFile(self) -> str:
+		return Configuration.__yamlFile
+
+	@yamlFile.setter
+	def yamlFile(self, yamlPath: str) -> None:
+		Configuration.__yamlFile = yamlPath
 		
 cfg = Configuration()

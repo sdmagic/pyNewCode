@@ -13,9 +13,11 @@ def parseCLI() -> None:
 	parser.add_argument('workPath', nargs='?', 
 						default=os.getcwd(),
 						help='Optional project with optional path.')
-
-	cfg.dirWorking = parser.parse_args().workPath	# Send path to Configuration
+			
 	cfg.dirApp     = os.path.dirname(os.path.realpath(__file__)) # Set cfg.dirApp
+	cfg.dirWorking = parser.parse_args().workPath	# Send path to Configuration
+	cfg.yamlFile   = os.path.join(cfg.dirApp, "pyNewCode.yaml")
+	cfg.readConfig()
 
 def main() -> None:
 	os.system('cls')
@@ -24,6 +26,7 @@ def main() -> None:
 	parseCLI()
 
 	print(f'Application directory: "{cfg.dirApp}"')
+	print(f'            YAML file: "{cfg.yamlFile}"')
 	print(f'    Project directory: "{cfg.dirWorking}"')
 	print(f'   Generating project: "{cfg.project}"')
 	print(f'    Modules directory: "{cfg.dirModules}"')
