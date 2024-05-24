@@ -1,7 +1,7 @@
 import datetime
 import logging
 import os
-import modules.message as msgcon	# msgcon because we use __init__.py for the contstants
+# import modules.message as msgcon	# msgcon because we use __init__.py for the contstants
 from modules.configuration import cfg
 from modules.directories import buildDir
 from rich.pretty import pprint
@@ -13,6 +13,13 @@ __version__: str	= "0.0.1"
 __date__: str		= "2024-05-23"	# YYYY-MM-DD
 
 __all__ = ("msg")
+
+LOGCRITICAL:	str	= "critical"
+LOGDEBUG:		str	= "debug"
+LOGERROR:		str	= "error"
+LOGINFO:		str	= "info"
+LOGNOLOG:		str	= "nolog"
+LOGWARNING:		str	= "warning"
 
 class Messenger:
 	'''
@@ -61,7 +68,6 @@ class Messenger:
 		logFormat: str = '%(asctime)s (%(levelname)s) %(message)s'
 
 		if cfg.logging:
-			print(f"Logging to: {logFname}")
 			logging.basicConfig(level=logging.DEBUG,
 								filename=logFname,
 								encoding='utf-8',
@@ -81,9 +87,7 @@ class Messenger:
 		else:
 			Messenger.__printIt: NoneType = None
 
-		print(f"Printing to screen: {Messenger.__printIt}")
-
-	def output(self, msgType: str = "info", message: str | dict = "") -> None:
+	def output(self, msgType: str = LOGINFO, message: str | dict = "") -> None:
 		'''
 		This is the ONLY safe way to
 		print to the screen and the logs
@@ -102,27 +106,26 @@ class Messenger:
 			>>> msg.Output(msgType = "warning", message = “Without followers, evil cannot spread.”)
 			'Without followers, evil cannot spread.'
 		'''
-		
 		if cfg.logging:
 			if type(message) == str:
-				match msgType.lower():
-					case msgcon.LOGCRITICAL:
-						logging.critical(message)
-					case msgcon.LOGDEBUG:
-						logging.debug(message)
-					case msgcon.LOGERROR:
-						logging.error(message)
-					case msgcon.LOGINFO:
-						logging.info(message)
-					case msgcon.LOGNOLOG:	# Our own log type -- Don't log
-						pass
-					case msgcon.LOGWARNING:
-						logging.warning(message)
-					case _:
-						logging.error("Unknown message")
+				msgType = msgType.lower()
+				if msgType == LOGCRITICAL:
+					logging.critical(message)
+				elif msgType == LOGDEBUG:
+					logging.debug(message)
+				elif msgType == LOGERROR:
+					logging.error(message)
+				elif msgType == LOGINFO:
+					logging.info(message)
+				elif msgType == LOGNOLOG:	# Our own log type -- Don't log
+					pass
+				elif msgType == LOGWARNING:
+					logging.warning(message)
+				else:
+					logging.error("Unknown message")
 
-		if self._printIt is not None:
-			self._printIt(message)
+		if Messenger.__printIt is not None:						
+			Messenger.__printIt(message)
 
 '''
 msg is our singleton instance of the Messenger class

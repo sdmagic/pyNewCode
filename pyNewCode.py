@@ -41,11 +41,13 @@ def main() -> None:
 	createDirs()
 	msg.config()
 
-	print(f'Application directory: "{cfg.dirApp}"')
-	print(f'            YAML file: "{cfg.yamlFile}"')
-	print(f'    Project directory: "{cfg.dirWorking}"')
-	print(f'   Generating project: "{cfg.project}"')
-	print(f'    Modules directory: "{cfg.dirModules}"')
+	msg.output(message = f'     Building Project: "{cfg.project}"')
+	msg.output(message = f'Application directory: "{cfg.dirApp}"')
+	msg.output(message = f'            YAML file: "{cfg.yamlFile}"')
+	msg.output(message = f'    Project directory: "{cfg.dirWorking}"')
+	msg.output(message = f'   Generating project: "{cfg.project}"')
+	msg.output(message = f'    Modules directory: "{cfg.dirModules}"')
+	msg.output(message = cfg.options)
 	
 	print(f"{"-" * 80}")
 
