@@ -6,3 +6,9 @@ directories:
   config: "config"
   logs: "logs"
   modules: "modules"
+
+# Options for the application
+options:
+  logging: true
+  screenpretty: true
+  screenprint: true

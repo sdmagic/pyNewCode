@@ -20,9 +20,12 @@ class Configuration:
 
 	properties:
 
-	dirConfig  (str)  (default = "config")  Configuration directory
-	dirLogs    (str)  (default = "logs")    Logs directory
-	dirModules (str)  (default = "modules") Modules directory
+	dirConfig    (str)  (default = "config")  Configuration directory
+	dirLogs      (str)  (default = "logs")    Logs directory
+	dirModules   (str)  (default = "modules") Modules directory
+	logging      (bool) (default = True)      Are we logging?
+	screenPretty (bool) (default = True)      Are we using pprint()?
+	screenPrint  (bool) (default = True)      Are we using printing to the screen?
 
 	getters & setters:
 
@@ -81,8 +84,20 @@ class Configuration:
 		return "modules" if type(retval := Configuration.__options.get("directories", {}).get("modules")) is not str else retval
 
 	@property
+	def logging(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("logging")) is not bool else retval
+
+	@property
 	def project(self) -> str:
 		return "newProject" if type(retval := Configuration.__options.get("project")) is not str else retval
+
+	@property
+	def screenPretty(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("screenpretty")) is not bool else retval
+
+	@property
+	def screenPrint(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("screenprint")) is not bool else retval
 
 	####################################################
 	# CLASS getters and setters:

@@ -2,6 +2,7 @@ import argparse
 import os
 from modules.configuration import cfg
 from modules.directories import createDirs
+from modules.message import msg
 
 def initialzeConfiguration(workPath: str) -> None:
 	'''
@@ -37,13 +38,14 @@ def main() -> None:
 
 	initialzeConfiguration(parseCLI())
 
+	createDirs()
+	msg.config()
+
 	print(f'Application directory: "{cfg.dirApp}"')
 	print(f'            YAML file: "{cfg.yamlFile}"')
 	print(f'    Project directory: "{cfg.dirWorking}"')
 	print(f'   Generating project: "{cfg.project}"')
 	print(f'    Modules directory: "{cfg.dirModules}"')
-
-	createDirs()
 	
 	print(f"{"-" * 80}")
 

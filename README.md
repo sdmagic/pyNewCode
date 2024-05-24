@@ -35,3 +35,16 @@ In either case, path is optional.
 If not specified, the current directory will be used.
 
 ---
+
+## Handy Newsletters
+
+* [Awesome Python List](https://python.libhunt.com/newsletter)
+* [Data Science Simplified](https://mathdatasimplified.com/)
+* [Dev Tips Weekly](https://ardalis.com/tips/)
+* [Postgres Weekly](https://postgresweekly.com/)
+* [Programming Digest](https://programmingdigest.net/)
+* [PyCoder’s Weekly](https://pycoders.com/)
+* [Python Morsels](https://www.pythonmorsels.com/newsletter/)
+* [Python Weekly](https://www.pythonweekly.com/)
+* [Real Python](https://realpython.com/newsletter/)
+* [VSCode.email](https://vscode.email/)
