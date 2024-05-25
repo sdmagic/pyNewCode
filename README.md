@@ -14,7 +14,7 @@ This application preforms all the usual start of project tasks for a new project
   - Creates a modules directory (for the project's modules and utilities)
 
 ---
-<div style="page-break-after: always;"></div>
+
 ## Syntax:
 #### pyNewCode.exe:
 ```
