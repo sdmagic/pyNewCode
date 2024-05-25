@@ -127,6 +127,24 @@ class Messenger:
 		if Messenger.__printIt is not None:						
 			Messenger.__printIt(message)
 
+	def YNwarning(self, outMsg: str, inMsg: str) -> str:
+		'''
+		Prints a warning message that asks the user to answer yes or no.
+
+		NOTES:
+			This ignores any configuration options, so:
+
+				The routine will always print to the screen using print()
+		'''
+		print(outMsg)
+		retval = ""
+		while retval != "Y" and retval != "N":
+			retval = input (f"{inMsg} ([Y]/N): ").upper()
+			if retval == "":
+				retval = "Y"
+		return retval
+
+
 '''
 msg is our singleton instance of the Messenger class
 '''

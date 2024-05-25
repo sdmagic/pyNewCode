@@ -1,4 +1,4 @@
-# <p style="text-align: center;">pyNewCode</p>
+# pyNewCode
 
 ## Description:
 
@@ -11,10 +11,13 @@ This application preforms all the usual start-of-project tasks for a new project
   - Creates a logs directory (for the project's log files)
   - Creates a modules directory (for the project's modules and utilities)
 
+- Creates a Project's base files
+  - Will warn and ask if a file already exists
+
 ---
 
 ## Syntax:
-#### pyNewCode.exe:
+
 ```
 pyNewCode.exe [path]
 
@@ -22,7 +25,9 @@ pyNewCode.exe [path]
 		pyNewCode C:\Users\user\Desktop\MyProject
 		(will build the new in C:\Users\user\Desktop\myProject directory)
 ```
-#### python pyNewCode.py:
+
+OR
+
 ```
 python pyNewCode.py [path]
 

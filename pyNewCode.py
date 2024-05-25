@@ -51,5 +51,12 @@ def main() -> None:
 	
 	print(f"{"-" * 80}")
 
+	# TODO: Check for existing files
+	# ----- We do not want to overwrite existing files
+
+	retval = msg.YNwarning("File exists", "Proceed and overwrite?")
+	msg.output(message = f"You selected: \"{retval}\"")
+
 if __name__ == '__main__':
     main()
+	
