@@ -63,7 +63,7 @@ class Messenger:
 		# ** Stupid Programmer Tricks to make the editor easier to use
 		# 		** These are long lines, so we use variables
 		# 		** to shorten the call to logging.basicConfig()
-		logFname: str = os.path.join(cfg.dirLogs, 
+		logFname: str = os.path.join(cfg.dirApp, cfg.dirLogs, 
 						f'log{datetime.datetime.now().strftime("%Y%m%d")}.log')
 		logFormat: str = '%(asctime)s (%(levelname)s) %(message)s'
 

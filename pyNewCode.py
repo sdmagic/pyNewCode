@@ -3,6 +3,7 @@ import os
 from modules.configuration import cfg
 from modules.directories import createDirs
 from modules.message import msg
+from modules.write import writeFiles
 
 def initialzeConfiguration(workPath: str) -> None:
 	'''
@@ -41,12 +42,17 @@ def main() -> None:
 	createDirs()
 	msg.config()
 
+	msg.output(message = f'{"-" * 80}')
 	msg.output(message = f'     Building Project: "{cfg.project}"')
 	msg.output(message = f'Application directory: "{cfg.dirApp}"')
 	msg.output(message = f'            YAML file: "{cfg.yamlFile}"')
 	msg.output(message = f'    Project directory: "{cfg.dirWorking}"')
 	msg.output(message = f'   Generating project: "{cfg.project}"')
 	msg.output(message = f'    Modules directory: "{cfg.dirModules}"')
+	msg.output(message = f'    Project Main File: "{os.path.join(cfg.dirWorking, f"{cfg.project}.py")}"')
+
+	writeFiles()
+
 	msg.output(message = cfg.options)
 	
 	print(f"{"-" * 80}")
@@ -54,8 +60,8 @@ def main() -> None:
 	# TODO: Check for existing files
 	# ----- We do not want to overwrite existing files
 
-	retval = msg.YNwarning("File exists", "Proceed and overwrite?")
-	msg.output(message = f"You selected: \"{retval}\"")
+	# retval = msg.YNwarning("File exists", "Proceed and overwrite?")
+	# msg.output(message = f"You selected: \"{retval}\"")
 
 if __name__ == '__main__':
     main()

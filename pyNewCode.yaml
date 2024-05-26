@@ -1,4 +1,6 @@
 project: "MyNewProject"
+version: "0.0.1"
+author: "Stephen D. Cooper"
 
 # The Project's directories
 # NEVER include the drive: in these directories
@@ -12,3 +14,8 @@ options:
   logging: true
   screenpretty: true
   screenprint: true
+
+# Project Files to build (write)
+build:
+  main: True
+  config: True

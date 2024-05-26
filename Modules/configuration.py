@@ -20,12 +20,17 @@ class Configuration:
 
 	properties:
 
-	dirConfig    (str)  (default = "config")  Configuration directory
-	dirLogs      (str)  (default = "logs")    Logs directory
-	dirModules   (str)  (default = "modules") Modules directory
-	logging      (bool) (default = True)      Are we logging?
-	screenPretty (bool) (default = True)      Are we using pprint()?
-	screenPrint  (bool) (default = True)      Are we using printing to the screen?
+	author       (str)  (default = "No Author Given) Project Author's name
+	buildConfig  (str)  (default = True)             Build the project's Configuration file?
+	buildMain    (str)  (default = True)             Build the project's main file?
+	dirConfig    (str)  (default = "config")         Configuration directory
+	dirLogs      (str)  (default = "logs")           Logs directory
+	dirModules   (str)  (default = "modules")        Modules directory
+	logging      (bool) (default = True)             Are we logging?
+	project      (str)  (default = "newProject")     Project name
+	screenPretty (bool) (default = True)             Are we using pprint()?
+	screenPrint  (bool) (default = True)             Are we using printing to the screen?
+	version      (str)  (default = "0.0.0")          Project version
 
 	getters & setters:
 
@@ -33,7 +38,6 @@ class Configuration:
 	dirWorking (str)  (default = ".\\")     Project's working directory
 		NOTE: There's a setter for dirWorking that sets it from a given path
 	options    (dict) (default = {})        All Configuration options
-	project    (str)  (default = "")        Project name
 
 	'''
 
@@ -72,6 +76,18 @@ class Configuration:
 	# CLASS PROPERTIES (application settings & options):
 
 	@property
+	def author(self) -> str:
+		return "No Author Given" if type(retval := Configuration.__options.get("author")) is not str else retval
+
+	@property
+	def buildConfig(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("config")) is not bool else retval
+
+	@property
+	def buildMain(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("main")) is not bool else retval
+
+	@property
 	def dirConfig(self) -> str:
 		return "config" if type(retval := Configuration.__options.get("directories", {}).get("config")) is not str else retval
 
@@ -88,6 +104,10 @@ class Configuration:
 		return True if type(retval := Configuration.__options.get("opions", {}).get("logging")) is not bool else retval
 
 	@property
+	def options(self) -> str:
+		return Configuration.__options
+
+	@property
 	def project(self) -> str:
 		return "newProject" if type(retval := Configuration.__options.get("project")) is not str else retval
 
@@ -98,6 +118,10 @@ class Configuration:
 	@property
 	def screenPrint(self) -> str:
 		return True if type(retval := Configuration.__options.get("opions", {}).get("screenprint")) is not bool else retval
+
+	@property
+	def version(self) -> str:
+		return "0.0.0" if type(retval := Configuration.__options.get("version")) is not str else retval
 
 	####################################################
 	# CLASS getters and setters:
@@ -117,10 +141,6 @@ class Configuration:
 	@dirWorking.setter
 	def dirWorking(self, path: str) -> None:
 		Configuration.__dirWorking = path
-
-	@property
-	def options(self) -> str:
-		return Configuration.__options
 
 	@property
 	def yamlFile(self) -> str:
