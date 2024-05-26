@@ -20,29 +20,36 @@ class Configuration:
 
 	properties:
 
-	dirConfig  (str)  (default = "config")  Configuration directory
-	dirLogs    (str)  (default = "logs")    Logs directory
-	dirModules (str)  (default = "modules") Modules directory
+	author       (str)  (default = "No Author Given) Project Author's name
+	buildConfig  (str)  (default = True)             Build the project's Configuration file?
+	buildMain    (str)  (default = True)             Build the project's main file?
+	dirConfig    (str)  (default = "config")         Configuration directory
+	dirLogs      (str)  (default = "logs")           Logs directory
+	dirModules   (str)  (default = "modules")        Modules directory
+	logging      (bool) (default = True)             Are we logging?
+	project      (str)  (default = "newProject")     Project name
+	screenPretty (bool) (default = True)             Are we using pprint()?
+	screenPrint  (bool) (default = True)             Are we using printing to the screen?
+	version      (str)  (default = "0.0.0")          Project version
 
 	getters & setters:
 
-	home       (str)  (default = ".")       Project's home directory
+	dirApp     (str)  (default = ".")       Project's home directory
+	dirWorking (str)  (default = ".\\")     Project's working directory
+		NOTE: There's a setter for dirWorking that sets it from a given path
 	options    (dict) (default = {})        All Configuration options
-	project    (str)  (default = "")        Project name
-		NOTE: There's a setter for project that sets home and project from one path string.
 
 	'''
 
-	__instance		= None
-	__yamlFile: str = os.path.join(os.getcwd(), "pyNewCode.yaml")
-	__options: dict = {}	# Config options (read from YAML file)
-	__project: str	= ""	# Project name
-	__home: str		= ""	# Home directory
+	__instance		  = None
+	__yamlFile: str   = os.path.join(os.getcwd(), "pyNewCode.yaml")
+	__options: dict   = {}	  # Config options (read from YAML file)
+	__dirApp: str     = ""	  # Application's starting directory
+	__dirWorking: str = ".\\" # Home directory
 
 	def __new__(cls):
 		if Configuration.__instance is None:
 			Configuration.__instance = super(Configuration, cls).__new__(cls)
-			Configuration.readConfig()
 
 		return Configuration.__instance
 
@@ -69,6 +76,18 @@ class Configuration:
 	# CLASS PROPERTIES (application settings & options):
 
 	@property
+	def author(self) -> str:
+		return "No Author Given" if type(retval := Configuration.__options.get("author")) is not str else retval
+
+	@property
+	def buildConfig(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("config")) is not bool else retval
+
+	@property
+	def buildMain(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("main")) is not bool else retval
+
+	@property
 	def dirConfig(self) -> str:
 		return "config" if type(retval := Configuration.__options.get("directories", {}).get("config")) is not str else retval
 
@@ -80,27 +99,55 @@ class Configuration:
 	def dirModules(self) -> str:
 		return "modules" if type(retval := Configuration.__options.get("directories", {}).get("modules")) is not str else retval
 
-	####################################################
-	# CLASS getters and setters:
-
 	@property
-	def dirHome(self) -> str:
-		return Configuration.__home
+	def logging(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("logging")) is not bool else retval
 
 	@property
 	def options(self) -> str:
 		return Configuration.__options
-		
+
 	@property
 	def project(self) -> str:
-		return Configuration.__project
+		return "newProject" if type(retval := Configuration.__options.get("project")) is not str else retval
 
-	@project.setter
-	def project(self, path: str) -> None:
-		Configuration.__home, Configuration.__project = os.path.split(path)
-		if Configuration.__project == "":
-			Configuration.__project = "MyProject"
-		if Configuration.__home == "":
-			Configuration.__home = os.getcwd()
+	@property
+	def screenPretty(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("screenpretty")) is not bool else retval
 
+	@property
+	def screenPrint(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("screenprint")) is not bool else retval
+
+	@property
+	def version(self) -> str:
+		return "0.0.0" if type(retval := Configuration.__options.get("version")) is not str else retval
+
+	####################################################
+	# CLASS getters and setters:
+
+	@property
+	def dirApp(self) -> str:
+		return Configuration.__dirApp
+
+	@dirApp.setter
+	def dirApp(self, path: str) -> None:
+		Configuration.__dirApp = path
+
+	@property
+	def dirWorking(self) -> str:
+		return Configuration.__dirWorking
+
+	@dirWorking.setter
+	def dirWorking(self, path: str) -> None:
+		Configuration.__dirWorking = path
+
+	@property
+	def yamlFile(self) -> str:
+		return Configuration.__yamlFile
+
+	@yamlFile.setter
+	def yamlFile(self, yamlPath: str) -> None:
+		Configuration.__yamlFile = yamlPath
+		
 cfg = Configuration()

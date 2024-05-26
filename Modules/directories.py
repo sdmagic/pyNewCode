@@ -31,9 +31,9 @@ def createDirs() -> None:
 
 	homeDir = os.getcwd()
 
-	buildDir(cfg.dirHome)
+	buildDir(cfg.dirWorking)
 	
-	os.chdir(cfg.dirHome)
+	os.chdir(cfg.dirWorking)
 
 	buildDir(cfg.dirConfig)
 	buildDir(cfg.dirLogs)
