@@ -22,6 +22,7 @@ class Configuration:
 
 	author       (str)  (default = "No Author Given) Project Author's name
 	buildConfig  (str)  (default = True)             Build the project's Configuration file?
+	buildInit    (str)  (default = True)             Build the project's modules __init__.py file?
 	buildMain    (str)  (default = True)             Build the project's main file?
 	dirConfig    (str)  (default = "config")         Configuration directory
 	dirLogs      (str)  (default = "logs")           Logs directory
@@ -82,6 +83,10 @@ class Configuration:
 	@property
 	def buildConfig(self) -> str:
 		return True if type(retval := Configuration.__options.get("build", {}).get("config")) is not bool else retval
+
+	@property
+	def buildInit(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("init")) is not bool else retval
 
 	@property
 	def buildMain(self) -> str:

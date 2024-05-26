@@ -3,6 +3,7 @@ import os
 from datetime import date, datetime
 from modules.configuration import cfg
 from modules.writeConfig import writeConfig
+from modules.writeInit import writeInit
 from modules.writeMain import writeMain
 
 __author__: str		= "Stephen D. Cooper <sdmagic@gmail.com>"
@@ -14,6 +15,9 @@ __date__: str		= "2024-05-07"	# YYYY-MM-DD
 all = ("writeFiles")
 
 def writeFiles() -> None:
+	'''
+	writeFiles() - Write the files for the project.
+	'''
 	homeDir = os.getcwd()
 	
 	if cfg.buildMain:
@@ -21,5 +25,8 @@ def writeFiles() -> None:
 
 	if cfg.buildConfig:
 		writeConfig()
+
+	if cfg.buildInit:
+		writeInit()
 
 	os.chdir(homeDir)

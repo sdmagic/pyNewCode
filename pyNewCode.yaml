@@ -17,5 +17,6 @@ options:
 
 # Project Files to build (write)
 build:
+  init: True
   main: True
   config: True
