@@ -1,5 +1,12 @@
 # pyNewCode
 
+- [pyNewCode](#pynewcode)
+	- [Description:](#description)
+	- [Syntax:](#syntax)
+	- [Handy Newsletters](#handy-newsletters)
+
+---
+
 ## Description:
 
 This application preforms all the usual start-of-project tasks for a new project. It:
@@ -13,6 +20,8 @@ This application preforms all the usual start-of-project tasks for a new project
 
 - Creates a Project's base files
   - Will warn and ask if a file already exists
+  - Creates the project's main file (starup point)
+  - Creates the project's configuration file
 
 ---
 
