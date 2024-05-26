@@ -22,6 +22,7 @@ This application preforms all the usual start-of-project tasks for a new project
   - Will warn and ask if a file already exists
   - Creates the project's main file (starup point)
   - Creates the project's configuration file
+  - Creates the project's modules\\__init__.py file
 
 ---
 

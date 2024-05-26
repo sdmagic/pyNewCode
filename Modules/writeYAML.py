@@ -9,11 +9,11 @@ __status__: str		= "alpha"
 __version__: str	= "0.0.1"
 __date__: str		= "2024-05-26"	# YYYY-MM-DD
 
-all = ("writeInit")
+all = ("writeYAML")
 
-def writeInit(initFile: str) -> None:
+def writeYAML(yamlFile: str) -> None:
 	'''
-	writeInit() writes the modules\__init__.py file
+	writeYAML() writes the project.yaml file
 	'''
-	with open(initFile, "w") as outFile:
+	with open(yamlFile, "w") as outFile:
 		pass

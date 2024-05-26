@@ -59,24 +59,14 @@ def writeMainInitialization(outFile: io.TextIOWrapper) -> None:
 
 	outFile.writelines(oLine)
 
-def writeMain() -> None:
+def writeMain(mainFile: str) -> None:
 	'''
 	writeMain() writes the main.py file
 	'''
-	mainFile = os.path.join(cfg.dirWorking, f"{cfg.project}.py")
-	retval = "Y"
-
-	if os.path.exists(mainFile):
-		retval = msg.YNwarning(f'"{mainFile}" exists!', f'Continue and overwrite')
-
-	if retval != "Y":
-		msg.output(msgType = msgcon.LOGWARNING, message = f'     Skipping File: "{mainFile}"')
-	else:
-		msg.output(message = f'         Writing File: "{mainFile}"')
-		with open(mainFile, "w") as outFile:
-			writeMainHeader(outFile)
-			writeDunders(outFile)
-			writeMainInitialization(outFile)
-			writeMainEntry(outFile)
+	with open(mainFile, "w") as outFile:
+		writeMainHeader(outFile)
+		writeDunders(outFile)
+		writeMainInitialization(outFile)
+		writeMainEntry(outFile)
 
 

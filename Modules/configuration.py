@@ -24,6 +24,7 @@ class Configuration:
 	buildConfig  (str)  (default = True)             Build the project's Configuration file?
 	buildInit    (str)  (default = True)             Build the project's modules __init__.py file?
 	buildMain    (str)  (default = True)             Build the project's main file?
+	buildYAML    (str)  (default = True)             Build the project's .yaml file?
 	dirConfig    (str)  (default = "config")         Configuration directory
 	dirLogs      (str)  (default = "logs")           Logs directory
 	dirModules   (str)  (default = "modules")        Modules directory
@@ -91,6 +92,10 @@ class Configuration:
 	@property
 	def buildMain(self) -> str:
 		return True if type(retval := Configuration.__options.get("build", {}).get("main")) is not bool else retval
+
+	@property
+	def buildYAML(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("yaml")) is not bool else retval
 
 	@property
 	def dirConfig(self) -> str:
