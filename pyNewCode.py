@@ -24,7 +24,8 @@ def initialzeConfiguration(workPath: str) -> None:
 
 def parseCLI() -> str:
 	'''
-	parseCLI parses and returns the command line arguments.
+	parseCLI parses and returns the comma
+	nd line arguments.
 	'''
 	parser = argparse.ArgumentParser(description='Generate a new Python project.')
 	parser.add_argument('workPath', nargs='?', 

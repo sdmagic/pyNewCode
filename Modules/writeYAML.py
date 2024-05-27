@@ -1,4 +1,5 @@
 import os
+import yaml
 import modules as msgcon	# msgcon because we use msg for the class
 from modules.configuration import cfg
 from modules.message import msg
@@ -15,5 +16,18 @@ def writeYAML(yamlFile: str) -> None:
 	'''
 	writeYAML() writes the project.yaml file
 	'''
-	with open(yamlFile, "w") as outFile:
-		pass
+	data = {'project': 'MyNewProject',
+			'version': '0.0.1',
+			'author': 'Nobody',
+			'directories': {'config': 'config',
+							'logs': 'logs',
+							'modules':'modules'},
+			'options': {'logging': True, 
+						'logVerbose': True,
+						'screenclear': True,
+						'screenpretty': True,
+						'screenprint': True}
+	}
+
+	with open(yamlFile, 'w') as outFile:
+		yaml.dump(data, outFile, default_flow_style=False)

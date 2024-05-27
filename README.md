@@ -1,8 +1,10 @@
+
 # pyNewCode
 
 - [pyNewCode](#pynewcode)
 	- [Description:](#description)
 	- [Syntax:](#syntax)
+	- [Example Outputs](#example-outputs)
 	- [Handy Newsletters](#handy-newsletters)
 
 ---
@@ -10,6 +12,11 @@
 ## Description:
 
 This application preforms all the usual start-of-project tasks for a new project. It:
+
+**NOTE:**
+
+All writing is driven by the YAML configuration file -- If you don't want
+the file or directory, you can just set that item to false.
 
 - Creates the project's directory structure
   - Creates a project directory (if we're not using the current directory)
@@ -23,6 +30,9 @@ This application preforms all the usual start-of-project tasks for a new project
   - Creates the project's main file (starup point)
   - Creates the project's configuration file
   - Creates the project's modules\\__init__.py file
+  - Creates the project's YAML file
+  - Creates a todo.txt file for the project
+    - Please follow the instructions in this file after generation
 
 ---
 
@@ -49,6 +59,33 @@ In either case, path is optional.
 
 If not specified, the current directory will be used.
 
+---
+
+## Example Outputs
+
+todo.txt file
+```
+# YAML file todos:
+	- Change "author: Nobody" to your name
+	- Change "project: MyNewProject" to your project name
+```
+
+project.yaml file
+```
+author: Nobody
+directories:
+  config: config
+  logs: logs
+  modules: modules
+options:
+  logVerbose: true
+  logging: true
+  screenclear: true
+  screenpretty: true
+  screenprint: true
+project: MyNewProject
+version: 0.0.1
+```
 ---
 
 ## Handy Newsletters

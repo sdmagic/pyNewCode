@@ -7,6 +7,7 @@ from modules.message import msg
 from modules.writeConfig import writeConfig
 from modules.writeInit import writeInit
 from modules.writeMain import writeMain
+from modules.writeTodo import writeTodo
 from modules.writeYAML import writeYAML
 
 __author__: str		= "Stephen D. Cooper <sdmagic@gmail.com>"
@@ -60,5 +61,10 @@ def writeFiles() -> None:
 		yamlFile = os.path.join(cfg.dirWorking, f"{cfg.project}.yaml")
 		if writeCheckForExistence(yamlFile):
 			writeYAML(yamlFile)
+
+	if cfg.buildTodo:
+		todoFile = os.path.join(cfg.dirWorking, f"YADAtodo.txt")
+		if writeCheckForExistence(todoFile):
+			writeTodo(todoFile)
 
 	os.chdir(homeDir)

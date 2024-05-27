@@ -17,7 +17,8 @@ options:
 
 # Project Files to build (write)
 build:
+  config: True
   init: True
   main: True
-  config: True
+  todo: True
   yaml: True

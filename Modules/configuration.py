@@ -94,6 +94,10 @@ class Configuration:
 		return True if type(retval := Configuration.__options.get("build", {}).get("main")) is not bool else retval
 
 	@property
+	def buildTodo(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("todo")) is not bool else retval
+
+	@property
 	def buildYAML(self) -> str:
 		return True if type(retval := Configuration.__options.get("build", {}).get("yaml")) is not bool else retval
 
