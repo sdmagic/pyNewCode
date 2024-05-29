@@ -18,8 +18,9 @@ def writeTodo(todoFile: str) -> None:
 	'''
 
 	with open(todoFile, 'w') as outFile:
-		oLine = [f"# YAML file todos:\n",
-				 f"\t- Change \"author: Nobody\" to your name\n",
-				 f"\t- Change \"project: MyNewProject\" to your project name"]
+		oLine = [f"# {cfg.project} Todos\n\n",
+				 f"## YAML file todos\n\n",
+				 f"[ ] Change author: \"Nobody\" to your name\n\n",
+				 f"[ ] Change project: \"MyNewProject\" to your project name\n"]
 		outFile.writelines(oLine)
 

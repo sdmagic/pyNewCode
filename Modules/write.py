@@ -48,12 +48,14 @@ def writeFiles() -> None:
 			writeMain(mainFile)
 
 	if cfg.buildConfig:
-		cfgFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"YADAconfiguration.py")
+		# cfgFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"YADAconfiguration.py")
+		cfgFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"configuration.py")
 		if writeCheckForExistence(cfgFile):
 			writeConfig(cfgFile)
 
 	if cfg.buildInit:
-		initFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"YADA__init__.py")
+		# initFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"YADA__init__.py")
+		initFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"__init__.py")
 		if writeCheckForExistence(initFile):
 			writeInit(initFile)
 
@@ -63,7 +65,8 @@ def writeFiles() -> None:
 			writeYAML(yamlFile)
 
 	if cfg.buildTodo:
-		todoFile = os.path.join(cfg.dirWorking, f"YADAtodo.txt")
+		# todoFile = os.path.join(cfg.dirWorking, f"YADAtodo.md")
+		todoFile = os.path.join(cfg.dirWorking, f"todo.md")
 		if writeCheckForExistence(todoFile):
 			writeTodo(todoFile)
 

@@ -52,7 +52,7 @@ def writeConfigClassHead(outFile: io.TextIOWrapper) -> None:
 			 f"\tversion      (default = \"0.0.0\")      The Project's version number\n",
 			 f"\tdirApp       (default = \".\")          The project's Application startup directory\n",
 			 f"\tdirWorking   (default = \".\")          The project's working directory\n",
-			 f"\tyamlFile     (default = \".\\newProject.yaml\") The Project's YAML file\n",
+			 f"\tyamlFile     (default = \"newProject.yaml\") The Project's YAML file\n",
 			 f"\t'''\n\n"]
 	outFile.writelines(oLine)
 
