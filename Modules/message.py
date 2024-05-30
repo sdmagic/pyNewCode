@@ -31,13 +31,25 @@ class Messenger:
 	
 	Use Messenger.output() to print to the screen.
 
-	DO NOT USE _printIt directly. Use Messenger.output() instead.
+	NOTES:
+
+		DO NOT USE __printIt directly. Use Messenger.output()
+	
+		message.py REQUIRES a cfg object that has these properties:
+
+			cfg.dirApp       (str)  - Application directory
+			cfg.dirLogs      (str)  - Log file directory
+			cfg.logging      (bool) - Log messages?
+			cfg.screenPretty (bool) - Use pprint()?
+			cfg.screenPrint  (bool) - Prin to screen?
 
 	Private Attributes:
-		__instance (class)	- Singleton instance
-		_printIt (function) - The function to use to print to the screen.
+
+		__instance (class)	 - Singleton instance
+		__printIt (function) - The function to use to print to the screen.
 
 	Methods:
+
 		output(msg) - Prints the message to the screen and log file.
 	'''
 
@@ -87,23 +99,23 @@ class Messenger:
 		else:
 			Messenger.__printIt: NoneType = None
 
-	def output(self, msgType: str = LOGINFO, message: str | dict = "") -> None:
+	def outLog(self, msgType: str = LOGINFO, message: str | dict = "") -> None:
 		'''
 		This is the ONLY safe way to
-		print to the screen and the logs
+		print to the Log file.
 			
 		Args:
 			msgType (str) - The type of log message
 			message (str) - The message to print.
 
 		Examples:
-			>>> msg.Output(msgType = "info", "Hello world!")
+			>>> msg.outLog(msgType = "info", "Hello world!")
 			'Hello world!'
 
-			>>> msg.Output(message = "Mongo only pawn... in game of life.")
+			>>> msg.outLog(message = "Mongo only pawn... in game of life.")
 			'Mongo only pawn... in game of life.'
 
-			>>> msg.Output(msgType = "warning", message = “Without followers, evil cannot spread.”)
+			>>> msg.outLog(msgType = "warning", message = “Without followers, evil cannot spread.”)
 			'Without followers, evil cannot spread.'
 		'''
 		if cfg.logging:
@@ -124,8 +136,47 @@ class Messenger:
 				else:
 					logging.error("Unknown message")
 
+	def outPrint(self, message: str | dict = "") -> None:
+		'''
+		This is the ONLY safe way to print to the screen.
+			
+		Args:
+			message (str) - The message to print.
+
+		Examples:
+			>>> msg.output("Hello world!")
+			'Hello world!'
+
+			>>> msg.output("Mongo only pawn... in game of life.")
+			'Mongo only pawn... in game of life.'
+
+			>>> msg.output(message = “Without followers, evil cannot spread.”)
+			'Without followers, evil cannot spread.'
+		'''
 		if Messenger.__printIt is not None:						
 			Messenger.__printIt(message)
+
+	def output(self, msgType: str = LOGINFO, message: str | dict = "") -> None:
+		'''
+		This is the ONLY safe way to
+		print to the screen and the Log file.
+			
+		Args:
+			msgType (str) - The type of log message
+			message (str) - The message to print.
+
+		Examples:
+			>>> msg.output(msgType = "info", "Hello world!")
+			'Hello world!'
+
+			>>> msg.output(message = "Mongo only pawn... in game of life.")
+			'Mongo only pawn... in game of life.'
+
+			>>> msg.output(msgType = "warning", message = “Without followers, evil cannot spread.”)
+			'Without followers, evil cannot spread.'
+		'''
+		Messenger.outLog(self, msgType=msgType, message=message)
+		Messenger.outPrint(self, message)
 
 	def YNwarning(self, outMsg: str, inMsg: str) -> str:
 		'''
