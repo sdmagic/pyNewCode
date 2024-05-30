@@ -17,7 +17,7 @@ def writeYAML(yamlFile: str) -> None:
 	writeYAML() writes the project.yaml file
 	'''
 	data = {'project': 'MyNewProject',
-			'version': f'"0.0.1"',
+			'version': 'VersionNumber',
 			'author': 'Nobody',
 			'directories': {'config': 'config',
 							'logs': 'logs',

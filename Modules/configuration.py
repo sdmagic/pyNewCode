@@ -24,9 +24,17 @@ class Configuration:
 	buildConfig  (str)  (default = True)             Build the project's Configuration file?
 	buildInit    (str)  (default = True)             Build the project's modules __init__.py file?
 	buildMain    (str)  (default = True)             Build the project's main file?
+	buildMessage (str)  (default = True)             Build the project's message and logging file?
+	buildTodo    (str)  (default = True)             Build the project's toDo.md file?
 	buildYAML    (str)  (default = True)             Build the project's .yaml file?
 	dirConfig    (str)  (default = "config")         Configuration directory
 	dirLogs      (str)  (default = "logs")           Logs directory
+	fileConfig   (str)  (default = "configuration")  The project's Configuration file
+	fileInit     (str)  (default = "__init__.py")    The project's modules __init__.py file
+	fileMain     (str)  (default = "main")           The project's main file
+	fileMessage  (str)  (default = "message")        The project's message and logging file
+	fileTodo     (str)  (default = "todo.md")        The project's todo.md file
+	fileYAML     (str)  (default = "main")           The project's .yaml file
 	dirModules   (str)  (default = "modules")        Modules directory
 	logging      (bool) (default = True)             Are we logging?
 	project      (str)  (default = "newProject")     Project name
@@ -94,6 +102,10 @@ class Configuration:
 		return True if type(retval := Configuration.__options.get("build", {}).get("main")) is not bool else retval
 
 	@property
+	def buildMessage(self) -> str:
+		return True if type(retval := Configuration.__options.get("build", {}).get("message")) is not bool else retval
+
+	@property
 	def buildTodo(self) -> str:
 		return True if type(retval := Configuration.__options.get("build", {}).get("todo")) is not bool else retval
 
@@ -112,6 +124,26 @@ class Configuration:
 	@property
 	def dirModules(self) -> str:
 		return "modules" if type(retval := Configuration.__options.get("directories", {}).get("modules")) is not str else retval
+
+	@property
+	def fileConfig(self) -> str:
+		return "configuration" if type(retval := Configuration.__options.get("file", {}).get("config")) is not str else retval
+
+	@property
+	def fileInit(self) -> str:
+		return "__init__" if type(retval := Configuration.__options.get("file", {}).get("init")) is not str else retval
+
+	@property
+	def fileMain(self) -> str:
+		return "main" if type(retval := Configuration.__options.get("file", {}).get("main")) is not str else retval
+
+	@property
+	def fileMessage(self) -> str:
+		return "message" if type(retval := Configuration.__options.get("file", {}).get("message")) is not str else retval
+
+	@property
+	def fileTodo(self) -> str:
+		return "todo.md" if type(retval := Configuration.__options.get("file", {}).get("todo")) is not bool else retval
 
 	@property
 	def logging(self) -> str:
@@ -157,11 +189,11 @@ class Configuration:
 		Configuration.__dirWorking = path
 
 	@property
-	def yamlFile(self) -> str:
+	def fileYAML(self) -> str:
 		return Configuration.__yamlFile
 
-	@yamlFile.setter
-	def yamlFile(self, yamlPath: str) -> None:
+	@fileYAML.setter
+	def fileYAML(self, yamlPath: str) -> None:
 		Configuration.__yamlFile = yamlPath
 		
 cfg = Configuration()

@@ -33,6 +33,8 @@ This python application preforms all the usual start-of-project tasks for a new 
 
 All writing is driven by the YAML configuration file -- If you don't want a particular file, you can just set that item to false.
 
+Also, all filenames are driven by the YAML configuraiton file.
+
 ---
 
 ## Requirements
