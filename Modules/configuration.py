@@ -143,7 +143,7 @@ class Configuration:
 
 	@property
 	def fileTodo(self) -> str:
-		return "todo.md" if type(retval := Configuration.__options.get("file", {}).get("todo")) is not bool else retval
+		return "todo.md" if type(retval := Configuration.__options.get("file", {}).get("todo")) is not str else retval
 
 	@property
 	def logging(self) -> str:

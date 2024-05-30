@@ -43,7 +43,7 @@ def writeFiles() -> None:
 	homeDir = os.getcwd()
 	
 	if cfg.buildMain:
-		mainFile = os.path.join(cfg.dirWorking, f"{cfg.project}.py")
+		mainFile = os.path.join(cfg.dirWorking, f"{cfg.fileMain}.py")
 		if writeCheckForExistence(mainFile):
 			writeMain(mainFile)
 

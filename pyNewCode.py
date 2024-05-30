@@ -1,5 +1,6 @@
 import argparse
 import os
+import modules.message as msgcon	# msgcon because we use __init__.py for the contstants
 from modules.configuration import cfg
 from modules.directories import createDirs
 from modules.message import msg
@@ -36,7 +37,7 @@ def initialzeConfiguration(workPath: str) -> None:
 
 	cfg.dirWorking = workPath
 	cfg.dirApp     = os.path.dirname(os.path.realpath(__file__))
-	cfg.yamlFile   = os.path.join(cfg.dirApp, "pyNewCode.yaml")
+	cfg.fileYAML   = os.path.join(cfg.dirApp, "pyNewCode.yaml")
 
 	cfg.readConfig()
 
@@ -70,7 +71,7 @@ def main() -> None:
 	msg.output(message = f'{"-" * 80}')
 	msg.output(message = f'     Building Project: "{cfg.project}"')
 	msg.output(message = f'Application directory: "{cfg.dirApp}"')
-	msg.output(message = f'            YAML file: "{cfg.yamlFile}"')
+	msg.output(message = f'            YAML file: "{cfg.fileYAML}"')
 	msg.output(message = f'    Project directory: "{cfg.dirWorking}"')
 	msg.output(message = f'   Generating project: "{cfg.project}"')
 	msg.output(message = f'    Modules directory: "{cfg.dirModules}"')
