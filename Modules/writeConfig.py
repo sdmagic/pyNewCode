@@ -52,7 +52,7 @@ def writeConfigClassHead(outFile: io.TextIOWrapper) -> None:
 			 f"\tversion      (default = \"0.0.0\")      The Project's version number\n",
 			 f"\tdirApp       (default = \".\")          The project's Application startup directory\n",
 			 f"\tdirWorking   (default = \".\")          The project's working directory\n",
-			 f"\tyamlFile     (default = \".\\newProject.yaml\") The Project's YAML file\n",
+			 f"\tyamlFile     (default = \"newProject.yaml\") The Project's YAML file\n",
 			 f"\t'''\n\n"]
 	outFile.writelines(oLine)
 
@@ -185,22 +185,12 @@ def writeConfigClass(outFile: io.TextIOWrapper) -> None:
 	writeConfigProperties(outFile)
 	writeConfigGettersSetters(outFile)
 
-def writeConfig() -> None:
+def writeConfig(cfgFile: str) -> None:
 	'''
 	writeMain() writes the main.py file
 	'''
-	cfgFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"YADAconfiguration.py")
-	retval = "Y"
-
-	if os.path.exists(cfgFile):
-		retval = msg.YNwarning(f'"{cfgFile}" exists!', f'Continue and overwrite')
-
-	if retval != "Y":
-		msg.output(msgType = msgcon.LOGWARNING, message = f'     Skipping File: "{cfgFile}"')
-	else:
-		msg.output(message = f'         Writing File: "{cfgFile}"')
-		with open(cfgFile, "w") as outFile:
-			writeConfigHeader(outFile)
-			writeDunders(outFile)
-			writeConfigClass(outFile)
-			writeConfigTail(outFile)
+	with open(cfgFile, "w") as outFile:
+		writeConfigHeader(outFile)
+		writeDunders(outFile)
+		writeConfigClass(outFile)
+		writeConfigTail(outFile)

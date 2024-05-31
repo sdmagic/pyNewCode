@@ -8,7 +8,13 @@ __pycache__/
 *$py.class
 
 # My Stuff for testing
+MyNewProject.py
+MyNewProject.yaml
 notes.py
+notes-test.yaml
+YADAtodo.txt
+modules/YADA__init__.py
+modules/YADAconfiguration.py
 
 # C extensions
 *.so
@@ -177,3 +183,6 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+MyNewProject.py
+MyNewProject.yaml
+Modules/YADAconfiguration.py

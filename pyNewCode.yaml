@@ -17,5 +17,26 @@ options:
 
 # Project Files to build (write)
 build:
-  main: True
   config: True
+  init: True
+  main: True
+  todo: True
+  yaml: True
+
+# "YADA" is prepended to avoid conflicts with existing files
+# Swap the comments when the real deal is being deployed
+
+# file:
+#   config: "configuration"
+#   init: "__init__.py"
+#   main: "MyNewProject"
+#   message: "message"
+#   todo: "todo.md"
+#   yaml: "MyNewProject.yaml"
+file:
+  config: "YADAconfiguration"
+  init: "YADA__init__.py"
+  main: "MyNewProject"
+  message: "YADAmessage"
+  todo: "YADAtodo.md"
+  yaml: "MyNewProject.yaml"

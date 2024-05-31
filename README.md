@@ -1,15 +1,17 @@
 # pyNewCode
 
 - [pyNewCode](#pynewcode)
-	- [Description:](#description)
-	- [Syntax:](#syntax)
-	- [Handy Newsletters](#handy-newsletters)
+  - [Description](#description)
+  - [Requirements](#requirements)
+  - [Syntax](#syntax)
+  - [Example Outputs](#example-outputs)
+  - [Handy Newsletters](#handy-newsletters)
 
 ---
 
-## Description:
+## Description
 
-This application preforms all the usual start-of-project tasks for a new project. It:
+This python application preforms all the usual start-of-project tasks for a new project. It:
 
 - Creates the project's directory structure
   - Creates a project directory (if we're not using the current directory)
@@ -22,17 +24,37 @@ This application preforms all the usual start-of-project tasks for a new project
   - Will warn and ask if a file already exists
   - Creates the project's main file (starup point)
   - Creates the project's configuration file
+  - Creates the project's modules\\__init__.py file
+  - Creates the project's YAML file
+  - Creates a todo.md file for the project
+    - Please follow the instructions in this file after generation
+
+**NOTE:**
+
+All writing is driven by the YAML configuration file -- If you don't want a particular file, you can just set that item to false.
+
+Also, all filenames are driven by the YAML configuraiton file.
 
 ---
 
-## Syntax:
+## Requirements
+
+**Environment**
+- python 3.12+
+- rich 13.3.5+
+- yaml 0.2.5+
+- All other packages are standard to python
+
+---
+
+## Syntax
 
 ```
 pyNewCode.exe [path]
 
 	Examples:
-		pyNewCode C:\Users\user\Desktop\MyProject
-		(will build the new in C:\Users\user\Desktop\myProject directory)
+		pyNewCode C:\dev\MyProject
+		(will build the new project in C:\dev\myProject directory)
 ```
 
 OR
@@ -41,13 +63,44 @@ OR
 python pyNewCode.py [path]
 
 	Examples:
-		python pyNewCode.py C:\Users\user\Desktop\MyProject
-		(will build the new project in C:\Users\user\Desktop\MyProject directory)
+		python pyNewCode.py C:\dev\MyProject
+		(will build the new project in C:\dev\MyProject directory)
 ```
+
 In either case, path is optional.
 
 If not specified, the current directory will be used.
 
+---
+
+## Example Outputs
+
+**todo.md file**
+```
+# Project Todos
+
+## YAML file todos:
+
+	- Change "author: Nobody" to your name
+	- Change "project: MyNewProject" to your project name
+```
+
+**project.yaml file**
+```
+author: Nobody
+directories:
+  config: config
+  logs: logs
+  modules: modules
+options:
+  logVerbose: true
+  logging: true
+  screenclear: true
+  screenpretty: true
+  screenprint: true
+project: MyNewProject
+version: 0.0.1
+```
 ---
 
 ## Handy Newsletters
