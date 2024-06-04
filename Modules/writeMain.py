@@ -1,6 +1,6 @@
 import io
 import os
-import modules.message as msgcon	# msgcon because we use __init__.py for the contstants
+import modules.constants as msgcon
 from datetime import date, datetime
 from modules.configuration import cfg
 from modules.message import msg

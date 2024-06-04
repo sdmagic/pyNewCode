@@ -1,6 +1,6 @@
 import io
 import os
-import modules as msgcon	# msgcon because we use msg for the class
+import modules.constants as msgcon
 from datetime import date, datetime
 from modules.configuration import cfg
 from modules.writeDunders import writeDunders

@@ -1,6 +1,6 @@
 import io
 import os
-import modules as msgcon	# msgcon because we use msg for the class
+import modules.constants as msgcon
 from datetime import date, datetime
 from modules.configuration import cfg
 from modules.message import msg
@@ -9,6 +9,7 @@ from modules.writeInit import writeInit
 from modules.writeMain import writeMain
 from modules.writeTodo import writeTodo
 from modules.writeYAML import writeYAML
+from modules.modWrite.writeMessage import writeMessage
 
 __author__: str		= "Stephen D. Cooper <sdmagic@gmail.com>"
 __copyright__: str	= "Copyright 2024 by Stephen D. Cooper. All rights reserved."
@@ -17,7 +18,6 @@ __version__: str	= "0.0.1"
 __date__: str		= "2024-05-07"	# YYYY-MM-DD
 
 all = ("writeFiles")
-
 
 def writeCheckForExistence(fName: str) -> bool:
 	'''
@@ -60,7 +60,7 @@ def writeFiles() -> None:
 	if cfg.buildMessage:
 		messageFile = os.path.join(cfg.dirWorking, cfg.dirModules, f"{cfg.fileMessage}.py")
 		if writeCheckForExistence(messageFile):
-			writeInit(messageFile)
+			writeMessage(messageFile)
 
 	if cfg.buildTodo:
 		todoFile = os.path.join(cfg.dirWorking, f"{cfg.fileTodo}")

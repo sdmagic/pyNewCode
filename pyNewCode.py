@@ -1,6 +1,6 @@
 import argparse
 import os
-import modules.message as msgcon	# msgcon because we use __init__.py for the contstants
+import modules.constants as msgcon
 from modules.configuration import cfg
 from modules.directories import createDirs
 from modules.message import msg

@@ -1,5 +1,5 @@
 import os
-import modules as msgcon	# msgcon because we use msg for the class
+import modules.constants as msgcon
 from modules.configuration import cfg
 from modules.message import msg
 

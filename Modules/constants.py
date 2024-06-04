@@ -1,0 +1,6 @@
+LOGCRITICAL:	str	= "critical"
+LOGDEBUG:		str	= "debug"
+LOGERROR:		str	= "error"
+LOGINFO:		str	= "info"
+LOGNOLOG:		str	= "nolog"
+LOGWARNING:		str	= "warning"

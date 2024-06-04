@@ -1,9 +1,8 @@
 import datetime
 import logging
 import os
-# import modules.message as msgcon	# msgcon because we use __init__.py for the contstants
+import modules.constants as msgcon
 from modules.configuration import cfg
-from modules.directories import buildDir
 from rich.pretty import pprint
 
 __author__: str		= "Stephen D. Cooper <sdmagic@gmail.com>"
@@ -13,13 +12,6 @@ __version__: str	= "0.0.1"
 __date__: str		= "2024-05-23"	# YYYY-MM-DD
 
 __all__ = ("msg")
-
-LOGCRITICAL:	str	= "critical"
-LOGDEBUG:		str	= "debug"
-LOGERROR:		str	= "error"
-LOGINFO:		str	= "info"
-LOGNOLOG:		str	= "nolog"
-LOGWARNING:		str	= "warning"
 
 class Messenger:
 	'''
@@ -99,7 +91,7 @@ class Messenger:
 		else:
 			Messenger.__printIt: NoneType = None
 
-	def outLog(self, msgType: str = LOGINFO, message: str | dict = "") -> None:
+	def outLog(self, msgType: str = msgcon.LOGINFO, message: str | dict = "") -> None:
 		'''
 		This is the ONLY safe way to
 		print to the Log file.
@@ -121,17 +113,17 @@ class Messenger:
 		if cfg.logging:
 			if type(message) == str:
 				msgType = msgType.lower()
-				if msgType == LOGCRITICAL:
+				if msgType == msgcon.LOGCRITICAL:
 					logging.critical(message)
-				elif msgType == LOGDEBUG:
+				elif msgType == msgcon.LOGDEBUG:
 					logging.debug(message)
-				elif msgType == LOGERROR:
+				elif msgType == msgcon.LOGERROR:
 					logging.error(message)
-				elif msgType == LOGINFO:
+				elif msgType == msgcon.LOGINFO:
 					logging.info(message)
-				elif msgType == LOGNOLOG:	# Our own log type -- Don't log
+				elif msgType == msgcon.LOGNOLOG:	# Our own log type -- Don't log
 					pass
-				elif msgType == LOGWARNING:
+				elif msgType == msgcon.LOGWARNING:
 					logging.warning(message)
 				else:
 					logging.error("Unknown message")
@@ -156,7 +148,7 @@ class Messenger:
 		if Messenger.__printIt is not None:						
 			Messenger.__printIt(message)
 
-	def output(self, msgType: str = LOGINFO, message: str | dict = "") -> None:
+	def output(self, msgType: str = msgcon.LOGINFO, message: str | dict = "") -> None:
 		'''
 		This is the ONLY safe way to
 		print to the screen and the Log file.
