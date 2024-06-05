@@ -23,8 +23,10 @@ This python application preforms all the usual start-of-project tasks for a new 
 - Creates a Project's base files
   - Will warn and ask if a file already exists
   - Creates the project's main file (starup point)
-  - Creates the project's configuration file
-  - Creates the project's modules\\__init__.py file
+  - Creates the project's configuration.py file
+  - Creates the project's message.py output & logging file
+  - Creates the project's modules init.py dunder file
+  - Creates the project's constants.py file to contain (almost) all of the application's constants
   - Creates the project's YAML file
   - Creates a todo.md file for the project
     - Please follow the instructions in this file after generation
