@@ -187,7 +187,6 @@ class Messenger:
 				retval = "Y"
 		return retval
 
-
 '''
 msg is our singleton instance of the Messenger class
 '''

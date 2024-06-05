@@ -20,6 +20,7 @@ build:
   config: True
   init: True
   main: True
+  message: True
   todo: True
   yaml: True
 
