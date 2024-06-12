@@ -14,6 +14,7 @@ options:
   logging: true
   screenpretty: true
   screenprint: true
+  trackruntime: true
 
 # Project Files to build (write)
 build:

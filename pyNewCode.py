@@ -61,6 +61,7 @@ def parseCLI() -> str:
 	return parser.parse_args().workPath
 
 def main() -> None:
+	start = time.time()
 	os.system('cls')
 	print(f"{"-" * 80}")
 
@@ -80,12 +81,16 @@ def main() -> None:
 
 	writeFiles()
 
-	msg.output(message = cfg.options)
+	print()
+	msg.outprint(message = f'{"-" * 20}')
+	msg.outprint(message = f'YAML File Contents:')
+	msg.outprint(message = cfg.options)
+	msg.outprint(message = f'{"-" * 20}')
+	print()
+	msg.output(message = f" Program running time: {(time.time() - start): .2f} seconds")
 	
 	print(f"{"-" * 80}")
 
 if __name__ == '__main__':
-	start = time.time()
 	main()
-	print(f"Program run time: {(time.time() - start): .2f} seconds")
 	

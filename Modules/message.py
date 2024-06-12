@@ -42,7 +42,9 @@ class Messenger:
 
 	Methods:
 
-		output(msg) - Prints the message to the screen and log file.
+		outlog(msg)   - Prints msg to log file
+		outprint(msg) - Prints msg to screen
+		output(msg)   - Prints the message to the screen and log file.
 	'''
 
 	__instance = None	# Singleton instance
@@ -91,7 +93,7 @@ class Messenger:
 		else:
 			Messenger.__printIt: NoneType = None
 
-	def outLog(self, msgType: str = msgcon.LOGINFO, message: str | dict = "") -> None:
+	def outlog(self, msgType: str = msgcon.LOGINFO, message: str | dict = "") -> None:
 		'''
 		This is the ONLY safe way to
 		print to the Log file.
@@ -128,7 +130,7 @@ class Messenger:
 				else:
 					logging.error("Unknown message")
 
-	def outPrint(self, message: str | dict = "") -> None:
+	def outprint(self, message: str | dict = "") -> None:
 		'''
 		This is the ONLY safe way to print to the screen.
 			
@@ -167,8 +169,8 @@ class Messenger:
 			>>> msg.output(msgType = "warning", message = “Without followers, evil cannot spread.”)
 			'Without followers, evil cannot spread.'
 		'''
-		Messenger.outLog(self, msgType=msgType, message=message)
-		Messenger.outPrint(self, message)
+		Messenger.outlog(self, msgType=msgType, message=message)
+		Messenger.outprint(self, message)
 
 	def YNwarning(self, outMsg: str, inMsg: str) -> str:
 		'''

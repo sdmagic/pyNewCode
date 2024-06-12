@@ -40,6 +40,7 @@ class Configuration:
 	project      (str)  (default = "newProject")     Project name
 	screenPretty (bool) (default = True)             Are we using pprint()?
 	screenPrint  (bool) (default = True)             Are we using printing to the screen?
+	trackRunTime (bool) (default = True)             track running time?
 	version      (str)  (default = "0.0.0")          Project version
 
 	getters & setters:
@@ -164,6 +165,10 @@ class Configuration:
 	@property
 	def screenPrint(self) -> str:
 		return True if type(retval := Configuration.__options.get("opions", {}).get("screenprint")) is not bool else retval
+
+	@property
+	def trackRunTime(self) -> str:
+		return True if type(retval := Configuration.__options.get("opions", {}).get("trackruntime")) is not bool else retval
 
 	@property
 	def version(self) -> str:
