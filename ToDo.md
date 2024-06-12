@@ -1,12 +1,15 @@
 # Items to add to the project
 
-[ ] Add message.py
+[ ] Add DBlogin.py
+
+~~[X] Add message.py~~
+
+[ ] Add new user/password routine
 
 [ ] Add password.py
 
-[ ] Add DBlogin.py
-
-[ ] Add spellNumber.py
+~~[X] Add spellNumber.py~~
+- ~~Note: This is built-in to Python~~
 
 [ ] Add include: with .py name & snippet to YAML
 
