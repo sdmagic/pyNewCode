@@ -41,3 +41,10 @@ file:
   message: "YADAmessage"
   todo: "YADAtodo.md"
   yaml: "MyNewProject.yaml"
+  dbyaml: "pyNewDB.yaml"
+
+databases:
+  - yamlfile: "pyNewDB.yaml"
+  - db_demo
+  - db_dvdrental
+  - db_myDB

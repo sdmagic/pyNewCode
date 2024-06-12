@@ -1,0 +1,4 @@
+db_demo:
+  - database: "demo"
+  - host: "localhost"
+  - port: 5432

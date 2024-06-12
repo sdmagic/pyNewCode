@@ -8,6 +8,8 @@
 
 [ ] Add spellNumber.py
 
+[ ] Add include: with .py name & snippet to YAML
+
 For better security at runtime, we break passwords into 2 parts. The first part creates the password and encryption key. The second part Gets the password and the encryption key.
 
 - Create password:

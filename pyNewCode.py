@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 import modules.constants as msgcon
 from modules.configuration import cfg
 from modules.directories import createDirs
@@ -84,5 +85,7 @@ def main() -> None:
 	print(f"{"-" * 80}")
 
 if __name__ == '__main__':
-    main()
+	start = time.time()
+	main()
+	print(f"Program run time: {(time.time() - start): .2f} seconds")
 	
