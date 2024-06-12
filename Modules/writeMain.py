@@ -21,10 +21,14 @@ def writeMainHeader(outFile: io.TextIOWrapper) -> None:
 	oLine = [f"'''\n",
 			 f"The application's main entry point.\n",
 			 f"'''\n\n",
-			 f'import os\n',
-			 f"from {cfg.dirModules}.configuration import cfg\n\n"]
-# from modules.message import msg
+			 f'import os\n']
+	outFile.writelines(oLine)
 
+	if cfg.trackRunTime:
+		oLine = [f"import time\n"]
+		outFile.writelines(oLine)
+
+	oLine = [f"from {cfg.dirModules}.configuration import cfg\n\n"]
 	outFile.writelines(oLine)
 
 def writeMainEntry(outFile: io.TextIOWrapper) -> None:
@@ -32,9 +36,23 @@ def writeMainEntry(outFile: io.TextIOWrapper) -> None:
 	writeMainEntry() - Write the main() entry point to the file.
 	'''
 
-	oLine = [f"def main():\n",
-			 f"\tinitialzeConfiguration()\n\n",
-			 f"if __name__ == '__main__':\n"
+	oLine = [f"def main():\n"]
+	outFile.writelines(oLine)
+
+	print(f"cfg.trackRunTime = {cfg.trackRunTime}")
+	if cfg.trackRunTime:
+		oLine = [f"\tstart = time.time()\n"]
+		outFile.writelines(oLine)
+
+	oLine = [f"\tinitialzeConfiguration()\n"]
+	outFile.writelines(oLine)
+
+	if cfg.trackRunTime:
+		oLine = ["\tprint(f'Program running time: {(time.time() - start): .2f} seconds')\n"]
+		outFile.writelines(oLine)
+
+
+	oLine = [f"\nif __name__ == '__main__':\n"
 			 f"\tmain()\n"]
 	outFile.writelines(oLine)
 

@@ -148,7 +148,7 @@ class Configuration:
 
 	@property
 	def logging(self) -> str:
-		return True if type(retval := Configuration.__options.get("opions", {}).get("logging")) is not bool else retval
+		return True if type(retval := Configuration.__options.get("options", {}).get("logging")) is not bool else retval
 
 	@property
 	def options(self) -> str:
@@ -160,15 +160,16 @@ class Configuration:
 
 	@property
 	def screenPretty(self) -> str:
-		return True if type(retval := Configuration.__options.get("opions", {}).get("screenpretty")) is not bool else retval
+		return True if type(retval := Configuration.__options.get("options", {}).get("screenpretty")) is not bool else retval
 
 	@property
 	def screenPrint(self) -> str:
-		return True if type(retval := Configuration.__options.get("opions", {}).get("screenprint")) is not bool else retval
+		return True if type(retval := Configuration.__options.get("options", {}).get("screenprint")) is not bool else retval
 
 	@property
 	def trackRunTime(self) -> str:
-		return True if type(retval := Configuration.__options.get("opions", {}).get("trackruntime")) is not bool else retval
+		print(type(retval := Configuration.__options.get("options", {}).get("trackruntime")))
+		return True if type(retval := Configuration.__options.get("options", {}).get("trackruntime")) is not bool else retval
 
 	@property
 	def version(self) -> str:
